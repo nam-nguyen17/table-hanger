@@ -9,6 +9,7 @@
 
     th {
       padding: 8px 10px;
+      border: 1px solid #fff;
 
       div {
         display: flex;
@@ -26,7 +27,7 @@
 
   &__body {
     display: block;
-    max-height: 650px;
+    max-height: 90vh;
     overflow: auto;
   }
 
@@ -38,7 +39,7 @@
   }
 
   &__row td {
-    border: 1px solid #7e7b7b;
+    border: 1px solid #ccc;
     padding: 8px;
     overflow: hidden;
     align-content: center;

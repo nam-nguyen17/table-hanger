@@ -17,7 +17,11 @@ const TableBody: React.FC<TableBodyProps> = ({ data, headers }) => {
               type="radio"
               name="selectRow"
               value={rowIndex}
-              style={{ cursor: 'pointer' }}
+              style={{
+                cursor: 'pointer',
+                width: '18px',
+                height: '18px',
+              }}
             />
           </td>
           {headers.slice(1).map((header, cellIndex) => (

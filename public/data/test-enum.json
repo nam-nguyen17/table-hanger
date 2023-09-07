@@ -20,10 +20,7 @@
     "label": "10d",
     "model": "10d",
     "url": "strongdrive_exteriornails/scn_nail/p/strong-drive-scn-smooth-shank-connector-nail",
-    "sellableSkus": [
-      "10D5HDG-R",
-      "10DHDG-R"
-    ],
+    "sellableSkus": ["10D5HDG-R", "10DHDG-R"],
     "sellableLink": "https://customer.strongtie.com/strongdrive_exteriornails/scn_nail/p/strong-drive-scn-smooth-shank-connector-nail"
   },
   {
@@ -33,11 +30,7 @@
     "label": "10dx1.5",
     "model": "10dx1.5",
     "url": "strongdrive_exteriornails/scn_nail/p/strong-drive-scn-smooth-shank-connector-nail",
-    "sellableSkus": [
-      "N10",
-      "N10D5HDG-R",
-      "N10DHDG-R"
-    ],
+    "sellableSkus": ["N10", "N10D5HDG-R", "N10DHDG-R"],
     "sellableLink": "https://customer.strongtie.com/strongdrive_exteriornails/scn_nail/p/strong-drive-scn-smooth-shank-connector-nail"
   },
   {
@@ -47,10 +40,7 @@
     "label": "16d",
     "model": "16d",
     "url": "strongdrive_exteriornails/scn_nail/p/strong-drive-scn-smooth-shank-connector-nail",
-    "sellableSkus": [
-      "16D5HDG-R",
-      "16DHDG-R"
-    ],
+    "sellableSkus": ["16D5HDG-R", "16DHDG-R"],
     "sellableLink": "https://customer.strongtie.com/strongdrive_exteriornails/scn_nail/p/strong-drive-scn-smooth-shank-connector-nail"
   },
   {
@@ -60,11 +50,7 @@
     "label": "16dx2.5",
     "model": "16dx2.5",
     "url": "strongdrive_exteriornails/scn_nail/p/strong-drive-scn-smooth-shank-connector-nail",
-    "sellableSkus": [
-      "N16",
-      "N16HDGPT2000",
-      "N16HDGPT500"
-    ],
+    "sellableSkus": ["N16", "N16HDGPT2000", "N16HDGPT500"],
     "sellableLink": "https://customer.strongtie.com/strongdrive_exteriornails/scn_nail/p/strong-drive-scn-smooth-shank-connector-nail"
   },
   {
@@ -72,9 +58,7 @@
     "enum": 5,
     "label": "16DPLX",
     "model": "16DPLX",
-    "sellableSkus": [
-      "*"
-    ],
+    "sellableSkus": ["*"],
     "sellableLink": "*"
   },
   {
@@ -84,10 +68,7 @@
     "label": "8d",
     "model": "8d",
     "url": "strongdrive_exteriornails/scn_nail/p/strong-drive-scn-smooth-shank-connector-nail",
-    "sellableSkus": [
-      "8DHDGPT2500",
-      "8DHDGPT500"
-    ],
+    "sellableSkus": ["8DHDGPT2500", "8DHDGPT500"],
     "sellableLink": "https://customer.strongtie.com/strongdrive_exteriornails/scn_nail/p/strong-drive-scn-smooth-shank-connector-nail"
   },
   {
@@ -95,9 +76,7 @@
     "enum": 7,
     "label": "N20A",
     "model": "N20A",
-    "sellableSkus": [
-      "*"
-    ],
+    "sellableSkus": ["*"],
     "sellableLink": "*"
   },
   {
@@ -105,9 +84,7 @@
     "enum": 8,
     "label": "N20AN",
     "model": "N20AN",
-    "sellableSkus": [
-      "*"
-    ],
+    "sellableSkus": ["*"],
     "sellableLink": "*"
   },
   {
@@ -115,9 +92,7 @@
     "enum": 9,
     "label": "N54A",
     "model": "N54A",
-    "sellableSkus": [
-      "N54A"
-    ],
+    "sellableSkus": ["N54A"],
     "sellableLink": "https://customer.strongtie.com/strongdrive_exteriornails/scnr_nail/p/strong-drive+scnr+ring-shank+connector+nail",
     "url": "strongdrive_exteriornails/scnr_nail/p/strong-drive-scnr-ring-shank-connector-nail"
   },
@@ -158,11 +133,7 @@
     "label": "SDS25300",
     "model": "SDS25300",
     "url": "strongdrive_exteriorwoodscrews/sds_screw/p/strong-drive-sds-heavy-duty-connector-screw",
-    "sellableSkus": [
-      "SDS25300",
-      "SDS25300-R25",
-      "SDS25300MB"
-    ],
+    "sellableSkus": ["SDS25300", "SDS25300-R25", "SDS25300MB"],
     "sellableLink": "https://customer.strongtie.com/strongdrive_exteriorwoodscrews/sds_screw/p/strong-drive-sds-heavy-duty-connector-screw"
   },
   {
@@ -178,11 +149,7 @@
     "label": "SDS25412",
     "model": "SDS25412",
     "url": "strongdrive_exteriorwoodscrews/sds_screw/p/strong-drive-sds-heavy-duty-connector-screw",
-    "sellableSkus": [
-      "SDS25412",
-      "SDS25412-R10",
-      "SDS25412MB"
-    ],
+    "sellableSkus": ["SDS25412", "SDS25412-R10", "SDS25412MB"],
     "sellableLink": "https://customer.strongtie.com/strongdrive_exteriorwoodscrews/sds_screw/p/strong-drive-sds-heavy-duty-connector-screw"
   },
   {
@@ -192,11 +159,7 @@
     "label": "SDS25600",
     "model": "SDS25600",
     "url": "strongdrive_exteriorwoodscrews/sds_screw/p/strong-drive-sds-heavy-duty-connector-screw",
-    "sellableSkus": [
-      "SDS25600",
-      "SDS25600-R10",
-      "SDS25600MB"
-    ],
+    "sellableSkus": ["SDS25600", "SDS25600-R10", "SDS25600MB"],
     "sellableLink": "https://customer.strongtie.com/strongdrive_exteriorwoodscrews/sds_screw/p/strong-drive-sds-heavy-duty-connector-screw"
   },
   {
@@ -224,11 +187,7 @@
     "label": "SDS25200",
     "model": "SDS25200",
     "url": "strongdrive_exteriorwoodscrews/sds_screw/p/strong-drive-sds-heavy-duty-connector-screw",
-    "sellableSkus": [
-      "SDS25200",
-      "SDS25200-R25",
-      "SDS25200MB"
-    ],
+    "sellableSkus": ["SDS25200", "SDS25200-R25", "SDS25200MB"],
     "sellableLink": "https://customer.strongtie.com/strongdrive_exteriorwoodscrews/sds_screw/p/strong-drive-sds-heavy-duty-connector-screw"
   },
   {
@@ -259,11 +218,7 @@
     "label": "SDS25212",
     "model": "SDS25212",
     "url": "strongdrive_exteriorwoodscrews/sds_screw/p/strong-drive-sds-heavy-duty-connector-screw",
-    "sellableSkus": [
-      "SDS25212",
-      "SDS25212-R25",
-      "SDS25212MB"
-    ],
+    "sellableSkus": ["SDS25212", "SDS25212-R25", "SDS25212MB"],
     "sellableLink": "https://customer.strongtie.com/strongdrive_exteriorwoodscrews/sds_screw/p/strong-drive-sds-heavy-duty-connector-screw"
   },
   {
@@ -313,10 +268,7 @@
     "label": "8dx1.5",
     "model": "8dx1.5",
     "url": "strongdrive_exteriornails/scn_nail/p/strong-drive-scn-smooth-shank-connector-nail",
-    "sellableSkus": [
-      "N8HDGPT4000",
-      "N8HDGPT500"
-    ],
+    "sellableSkus": ["N8HDGPT4000", "N8HDGPT500"],
     "sellableLink": "https://customer.strongtie.com/strongdrive_exteriornails/scn_nail/p/strong-drive-scn-smooth-shank-connector-nail"
   },
   {
@@ -332,11 +284,7 @@
     "label": "SDS25112",
     "model": "SDS25112",
     "url": "strongdrive_exteriorwoodscrews/sds_screw/p/strong-drive-sds-heavy-duty-connector-screw",
-    "sellableSkus": [
-      "SDS25112",
-      "SDS25112-R25",
-      "SDS25112MB"
-    ],
+    "sellableSkus": ["SDS25112", "SDS25112-R25", "SDS25112MB"],
     "sellableLink": "https://customer.strongtie.com/strongdrive_exteriorwoodscrews/sds_screw/p/strong-drive-sds-heavy-duty-connector-screw"
   },
   {
@@ -346,9 +294,7 @@
     "label": "16d Sinker",
     "model": "16d Sinker",
     "url": "strongdrive_exteriornails/scn_nail/p/strong-drive-scn-smooth-shank-connector-nail",
-    "sellableSkus": [
-      "*"
-    ],
+    "sellableSkus": ["*"],
     "sellableLink": "*"
   },
   {
@@ -558,11 +504,7 @@
     "label": "SD9112",
     "model": "SD9112",
     "url": "strongdrive_exteriorwoodscrews/sd_screw/p/strong-drive-sd-connector-screw",
-    "sellableSkus": [
-      "SD9112MB",
-      "SD9112R100",
-      "SD9112R500"
-    ],
+    "sellableSkus": ["SD9112MB", "SD9112R100", "SD9112R500"],
     "sellableLink": "https://customer.strongtie.com/strongdrive_exteriorwoodscrews/sd_screw/p/strong-drive-sd-connector-screw"
   },
   {
@@ -572,11 +514,7 @@
     "label": "SD9212",
     "model": "SD9212",
     "url": "strongdrive_exteriorwoodscrews/sd_screw/p/strong-drive-sd-connector-screw",
-    "sellableSkus": [
-      "SD9212MB",
-      "SD9212R100-R",
-      "SD9212R500"
-    ],
+    "sellableSkus": ["SD9212MB", "SD9212R100-R", "SD9212R500"],
     "sellableLink": "https://customer.strongtie.com/strongdrive_exteriorwoodscrews/sd_screw/p/strong-drive-sd-connector-screw"
   },
   {
@@ -586,11 +524,7 @@
     "label": "SD10112",
     "model": "SD10112",
     "url": "strongdrive_exteriorwoodscrews/sd_screw/p/strong-drive-sd-connector-screw",
-    "sellableSkus": [
-      "SD10112MB",
-      "DF10112R100",
-      "SD10112R500"
-    ],
+    "sellableSkus": ["SD10112MB", "DF10112R100", "SD10112R500"],
     "sellableLink": "https://customer.strongtie.com/strongdrive_exteriorwoodscrews/sd_screw/p/strong-drive-sd-connector-screw"
   },
   {
@@ -600,11 +534,7 @@
     "label": "SD10212",
     "model": "SD10212",
     "url": "strongdrive_exteriorwoodscrews/sd_screw/p/strong-drive-sd-connector-screw",
-    "sellableSkus": [
-      "SD10212MB",
-      "SD10212R100-R",
-      "SD10212R500"
-    ],
+    "sellableSkus": ["SD10212MB", "SD10212R100-R", "SD10212R500"],
     "sellableLink": "https://customer.strongtie.com/strongdrive_exteriorwoodscrews/sd_screw/p/strong-drive-sd-connector-screw"
   },
   {
@@ -679,9 +609,7 @@
     "label": "10dx2.5",
     "model": "10dx2.5",
     "url": "strongdrive_connectornails/scn33t_cnail/p/strong-drive+33°+scn+smooth-shank+connector+nail",
-    "sellableSkus": [
-      "*"
-    ],
+    "sellableSkus": ["*"],
     "sellableLink": "*"
   },
   {
@@ -724,11 +652,7 @@
     "label": "SDS25212",
     "model": "SDS25212",
     "url": "strongdrive_exteriorwoodscrews/sds_screw/p/strong-drive-sds-heavy-duty-connector-screw",
-    "sellableSkus": [
-      "SDS25212",
-      "SDS25212-R25",
-      "SDS25212MB"
-    ],
+    "sellableSkus": ["SDS25212", "SDS25212-R25", "SDS25212MB"],
     "sellableLink": "https://customer.strongtie.com/strongdrive_exteriorwoodscrews/sds_screw/p/strong-drive-sds-heavy-duty-connector-screw"
   },
   {
@@ -745,11 +669,7 @@
     "label": "SDS25112",
     "model": "SDS25112",
     "url": "strongdrive_exteriorwoodscrews/sds_screw/p/strong-drive-sds-heavy-duty-connector-screw",
-    "sellableSkus": [
-      "SDS25112",
-      "SDS25112-R25",
-      "SDS25112MB"
-    ],
+    "sellableSkus": ["SDS25112", "SDS25112-R25", "SDS25112MB"],
     "sellableLink": "https://customer.strongtie.com/strongdrive_exteriorwoodscrews/sds_screw/p/strong-drive-sds-heavy-duty-connector-screw"
   },
   {
@@ -767,11 +687,7 @@
     "label": "SDS25200",
     "model": "SDS25200",
     "url": "strongdrive_exteriorwoodscrews/sds_screw/p/strong-drive-sds-heavy-duty-connector-screw",
-    "sellableSkus": [
-      "SDS25200",
-      "SDS25200-R25",
-      "SDS25200MB"
-    ],
+    "sellableSkus": ["SDS25200", "SDS25200-R25", "SDS25200MB"],
     "sellableLink": "https://customer.strongtie.com/strongdrive_exteriorwoodscrews/sds_screw/p/strong-drive-sds-heavy-duty-connector-screw"
   },
   {
@@ -781,11 +697,7 @@
     "label": "SDS25300",
     "model": "SDS25300",
     "url": "strongdrive_exteriorwoodscrews/sds_screw/p/strong-drive-sds-heavy-duty-connector-screw",
-    "sellableSkus": [
-      "SDS25300",
-      "SDS25300-R25",
-      "SDS25300MB"
-    ],
+    "sellableSkus": ["SDS25300", "SDS25300-R25", "SDS25300MB"],
     "sellableLink": "https://customer.strongtie.com/strongdrive_exteriorwoodscrews/sds_screw/p/strong-drive-sds-heavy-duty-connector-screw"
   },
   {
@@ -795,12 +707,7 @@
     "label": "SDS25312",
     "model": "SDS25312",
     "url": "strongdrive_exteriorwoodscrews/sds_screw/p/strong-drive-sds-heavy-duty-connector-screw",
-    "sellableSkus": [
-      "SDS25312",
-      "SDS25312-R10",
-      "SDS25312-R25L",
-      "SDS25312MB"
-    ],
+    "sellableSkus": ["SDS25312", "SDS25312-R10", "SDS25312-R25L", "SDS25312MB"],
     "sellableLink": "https://customer.strongtie.com/strongdrive_exteriorwoodscrews/sds_screw/p/strong-drive-sds-heavy-duty-connector-screw"
   },
   {
@@ -810,11 +717,7 @@
     "label": "SDS25412",
     "model": "SDS25412",
     "url": "strongdrive_exteriorwoodscrews/sds_screw/p/strong-drive-sds-heavy-duty-connector-screw",
-    "sellableSkus": [
-      "SDS25412",
-      "SDS25412-R10",
-      "SDS25412MB"
-    ],
+    "sellableSkus": ["SDS25412", "SDS25412-R10", "SDS25412MB"],
     "sellableLink": "https://customer.strongtie.com/strongdrive_exteriorwoodscrews/sds_screw/p/strong-drive-sds-heavy-duty-connector-screw"
   },
   {
@@ -824,11 +727,7 @@
     "label": "SDS25600",
     "model": "SDS25600",
     "url": "strongdrive_exteriorwoodscrews/sds_screw/p/strong-drive-sds-heavy-duty-connector-screw",
-    "sellableSkus": [
-      "SDS25600",
-      "SDS25600-R10",
-      "SDS25600MB"
-    ],
+    "sellableSkus": ["SDS25600", "SDS25600-R10", "SDS25600MB"],
     "sellableLink": "https://customer.strongtie.com/strongdrive_exteriorwoodscrews/sds_screw/p/strong-drive-sds-heavy-duty-connector-screw"
   },
   {
