@@ -1,17 +1,25 @@
 import React from 'react'
-import styles from './styles.module.scss'
+import { SelectedRowData } from '../../contexts/SelectedRowContext'
+import './style.css'
 
 interface TableBodyProps {
   data: any[]
   headers: string[]
+  onRadioClick: (rowIndex: number) => void
+  selectedRow: SelectedRowData | null
 }
 
-const TableBody: React.FC<TableBodyProps> = ({ data, headers }) => {
+const TableBody: React.FC<TableBodyProps> = ({
+  data,
+  headers,
+  onRadioClick,
+  selectedRow,
+}) => {
   return (
     // eslint-disable-next-line jsx-a11y/no-redundant-roles
-    <tbody role="rowgroup" className={styles.table__body}>
+    <tbody role="rowgroup" className="table body">
       {data.map((row, rowIndex) => (
-        <tr role="row" key={rowIndex} className={styles.table__row}>
+        <tr role="row" key={rowIndex} className="table row">
           <td role="cell">
             <input
               type="radio"
@@ -22,6 +30,7 @@ const TableBody: React.FC<TableBodyProps> = ({ data, headers }) => {
                 width: '18px',
                 height: '18px',
               }}
+              onClick={() => onRadioClick(rowIndex)}
             />
           </td>
           {headers.slice(1).map((header, cellIndex) => (

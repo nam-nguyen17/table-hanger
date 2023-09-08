@@ -2,43 +2,31 @@
   border: 1px solid #ccc;
   border-spacing: 0px;
 
-  &__header {
+  .header {
     background-color: #b26d1e;
     color: #fff;
     font-weight: 700;
 
-    th {
-      padding: 8px 10px;
+    .th {
       border: 1px solid #fff;
-
-      div {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-
-      button {
-        border: none;
-        background-color: transparent;
-        cursor: pointer;
-      }
+      padding: 8px 10px;
     }
   }
 
-  &__body {
+  .body {
     display: block;
     max-height: 90vh;
     overflow: auto;
   }
 
-  &__header,
-  &__body tr {
+  .header,
+  .body tr {
     display: table;
     width: 100%;
     table-layout: fixed;
   }
 
-  &__row td {
+  .row td {
     border: 1px solid #ccc;
     padding: 8px;
     overflow: hidden;

@@ -1,9 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react'
-import Navbar from '../layouts/Navbar'
-import PageContainer from '../layouts/PageContainer'
-import Table from '../components/table/Table'
-import { fetchData } from '../utils/helpers'
-import { HangerData } from '../utils/constants'
+import Table from '../../components/table/Table'
+import { useSelectedRowContext } from '../../contexts/SelectedRowContext'
+import { HangerData } from '../../utils/constants'
+import { fetchData } from '../../utils/helpers'
 
 const headerMapping = {
   '': '',
@@ -24,14 +24,18 @@ interface EnumData {
   name: string
   enum: number
   displayLabel: string
-  url?: string
+}
+
+type HangerTableProps = {
+  setSelectedRow: (rowIndex: number | null, rowData: HangerData) => void
 }
 
 const headers = Object.keys(headerMapping)
 
-const Hanger: React.FC = () => {
+const HangerTable: React.FC<HangerTableProps> = ({ setSelectedRow }) => {
   const [hangersData, setHangersData] = useState<HangerData[]>([])
   const [enumData, setEnumData] = useState<EnumData[]>([])
+  const { selectRow, selectedRow } = useSelectedRowContext()
 
   const fetchHangerData = async () => {
     const hangerData: HangerData[] = await fetchData('./data/test-data.json')
@@ -71,6 +75,7 @@ const Hanger: React.FC = () => {
 
       return {
         ...row,
+        tfSize: row.tfSize === 0 ? '-' : row.tfSize,
         tfNailQty,
         hNailQty,
         jNailQty,
@@ -80,24 +85,27 @@ const Hanger: React.FC = () => {
     setEnumData(enumData)
     setHangersData(modifiedData)
   }
-  console.log(enumData)
 
   useEffect(() => {
     fetchHangerData()
   }, [])
 
+  const handleRadioClick = (rowIndex: number) => {
+    selectRow(rowIndex)
+    setSelectedRow(rowIndex, hangersData[rowIndex])
+  }
+
   return (
-    <>
-      <Navbar />
-      <PageContainer>
-        <Table
-          headers={headers}
-          data={hangersData}
-          headerMapping={headerMapping}
-        />
-      </PageContainer>
-    </>
+    <div>
+      <Table
+        headers={headers}
+        data={hangersData}
+        headerMapping={headerMapping}
+        onRadioClick={(rowIndex) => handleRadioClick(rowIndex)}
+        selectedRow={selectedRow}
+      />
+    </div>
   )
 }
 
-export default Hanger
+export default HangerTable

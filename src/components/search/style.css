@@ -1,0 +1,22 @@
+.searchBar {
+  margin: 10px 0;
+
+  .input {
+    height: 30px;
+    width: 300px;
+    font-size: 16px;
+    padding: 0 10px;
+    border-radius: 5px;
+  }
+
+  .button {
+    height: 30px;
+    width: 90px;
+    margin-left: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #ccc;
+    font-weight: 600;
+    cursor: pointer;
+  }
+}
