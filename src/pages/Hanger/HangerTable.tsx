@@ -1,9 +1,7 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react'
 import Table from '../../components/table/Table'
-import { useSelectedRowContext } from '../../contexts/SelectedRowContext'
-import { HangerData } from '../../utils/constants'
-import { fetchData } from '../../utils/helpers'
+import { useHangerDataContext } from '../../contexts/HangerDataContext'
+import { HangerData, EnumData } from '../../utils/constants'
 
 const headerMapping = {
   '': '',
@@ -20,28 +18,38 @@ const headerMapping = {
   uplift: 'Uplift (lbs)',
 }
 
-interface EnumData {
-  name: string
-  enum: number
-  displayLabel: string
-}
-
 type HangerTableProps = {
-  setSelectedRow: (rowIndex: number | null, rowData: HangerData) => void
+  selectedRowsData: HangerData[]
+  selectedRow: number | null
+  setSelectedRows: (selectedRows: HangerData[]) => void
+  onRadioClick: (rowIndex: number) => void
 }
 
 const headers = Object.keys(headerMapping)
 
-const HangerTable: React.FC<HangerTableProps> = ({ setSelectedRow }) => {
-  const [hangersData, setHangersData] = useState<HangerData[]>([])
-  const [enumData, setEnumData] = useState<EnumData[]>([])
-  const { selectRow, selectedRow } = useSelectedRowContext()
+const HangerTable: React.FC<HangerTableProps> = ({
+  selectedRowsData,
+  setSelectedRows,
+  onRadioClick,
+}) => {
+  const { hangersData, enumData } = useHangerDataContext()
+  const [modifiedData, setModifiedData] = useState<HangerData[]>([])
 
-  const fetchHangerData = async () => {
-    const hangerData: HangerData[] = await fetchData('./data/test-data.json')
-    const enumData: EnumData[] = await fetchData('./data/test-enum.json')
+  const handleRowSelect = (rowIndex: number) => {
+    // Toggle row selection
+    const selectedRow = modifiedData[rowIndex]
+    const isSelected = selectedRowsData.includes(selectedRow)
 
-    const modifiedData = hangerData.map((row) => {
+    if (isSelected) {
+      setSelectedRows(selectedRowsData.filter((row) => row !== selectedRow))
+    } else {
+      setSelectedRows([...selectedRowsData, selectedRow])
+    }
+  }
+
+  useEffect(() => {
+    // Perform the modifications to hangersData based on enumData here
+    const updatedData = hangersData.map((row) => {
       // TF Fasteners
       const tfNailQty =
         row.tfNailQty === 0
@@ -82,27 +90,22 @@ const HangerTable: React.FC<HangerTableProps> = ({ setSelectedRow }) => {
       }
     })
 
-    setEnumData(enumData)
-    setHangersData(modifiedData)
-  }
-
-  useEffect(() => {
-    fetchHangerData()
-  }, [])
+    setModifiedData(updatedData)
+  }, [hangersData, enumData])
 
   const handleRadioClick = (rowIndex: number) => {
-    selectRow(rowIndex)
-    setSelectedRow(rowIndex, hangersData[rowIndex])
+    handleRowSelect(rowIndex)
+    onRadioClick(rowIndex)
   }
 
   return (
     <div>
       <Table
         headers={headers}
-        data={hangersData}
+        data={modifiedData}
         headerMapping={headerMapping}
         onRadioClick={(rowIndex) => handleRadioClick(rowIndex)}
-        selectedRow={selectedRow}
+        selectedRows={selectedRowsData}
       />
     </div>
   )

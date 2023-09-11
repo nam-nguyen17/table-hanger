@@ -1,15 +1,16 @@
 import React from 'react'
-import { SelectedRowData } from '../../contexts/SelectedRowContext'
+import { HangerData } from '../../utils/constants'
 import TableBody from './TableBody'
 import TableHeader from './TableHeader'
 import './style.css'
 
 interface TableProps {
   headers: string[]
-  data: any[]
+  data: HangerData[]
   headerMapping: Record<string, string>
-  onRadioClick: (rowIndex: number) => void
-  selectedRow: SelectedRowData | null
+  selectedRows?: HangerData[]
+  onRowSelect?: (rowIndex: number) => void
+  onRadioClick?: (rowIndex: number) => void
 }
 
 const Table: React.FC<TableProps> = ({
@@ -17,7 +18,8 @@ const Table: React.FC<TableProps> = ({
   data,
   headerMapping,
   onRadioClick,
-  selectedRow,
+  onRowSelect,
+  selectedRows,
 }) => {
   return (
     <table role="table" className="table">
@@ -26,7 +28,7 @@ const Table: React.FC<TableProps> = ({
         data={data}
         headers={headers}
         onRadioClick={onRadioClick}
-        selectedRow={selectedRow}
+        selectedRows={selectedRows}
       />
     </table>
   )

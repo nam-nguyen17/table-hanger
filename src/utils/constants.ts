@@ -14,3 +14,9 @@ export interface HangerData {
   load: number
   uplift: number
 }
+
+export interface EnumData {
+  name: string
+  enum: number
+  displayLabel: string
+}
