@@ -105,7 +105,6 @@ const HangerTable: React.FC<HangerTableProps> = ({
         data={modifiedData}
         headerMapping={headerMapping}
         onRadioClick={(rowIndex) => handleRadioClick(rowIndex)}
-        selectedRows={selectedRowsData}
       />
     </div>
   )

@@ -15,13 +15,9 @@ const Hanger: React.FC = () => {
 
   const handleButtonClick = () => {
     if (selectedRow !== null) {
-      // Get the selected data based on the selectedRow index
       const selectedData = selectedRowData[selectedRow]
 
-      // Add the selected data to selectedRowData state
       setSelectedRowData([...selectedRowData, selectedData])
-
-      // Clear the selected row
       setSelectedRow(null)
     }
   }
@@ -49,29 +45,39 @@ const Hanger: React.FC = () => {
           </li>
         </ul>
         <div className="output-result">
-          <div className="addJob">
-            <Button disabled={selectedRow === null} onClick={handleButtonClick}>
-              Add to Job List
-            </Button>
-          </div>
-          <div>
-            <div className="tableInfoBar">
-              <Search onSearch={console.log} />
-            </div>
-            <div>
-              {activeTab === 'Output' ? (
-                <HangerTable
-                  selectedRowsData={selectedRowData}
-                  setSelectedRows={(selectedRows) =>
-                    setSelectedRowData(selectedRows)
-                  }
-                  onRadioClick={(rowIndex) => setSelectedRow(rowIndex)}
-                  selectedRow={selectedRow}
-                />
-              ) : (
-                <JobList selectedRowsData={selectedRowData} />
-              )}
-            </div>
+          {activeTab === 'Output' && (
+            <>
+              <div className="addJob">
+                <Button
+                  disabled={selectedRow === null}
+                  onClick={handleButtonClick}
+                >
+                  Add to Job List
+                </Button>
+              </div>
+              <div>
+                <div className="tableInfoBar">
+                  <Search onSearch={console.log} />
+                </div>
+              </div>
+            </>
+          )}
+          <div style={{ margin: '14px 0' }}>
+            {activeTab === 'Output' ? (
+              <HangerTable
+                selectedRowsData={selectedRowData}
+                setSelectedRows={(selectedRows) =>
+                  setSelectedRowData(selectedRows)
+                }
+                onRadioClick={(rowIndex) => setSelectedRow(rowIndex)}
+                selectedRow={selectedRow}
+              />
+            ) : (
+              <JobList
+                selectedRowsData={selectedRowData}
+                setSelectedRowsData={setSelectedRowData}
+              />
+            )}
           </div>
         </div>
       </PageContainer>

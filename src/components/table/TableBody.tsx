@@ -1,12 +1,10 @@
 /* eslint-disable jsx-a11y/no-redundant-roles */
 import React from 'react'
 import './style.css'
-import { HangerData } from '../../utils/constants'
 
 interface TableBodyProps {
   data: any[]
   headers: string[]
-  selectedRows?: HangerData[]
   onRadioClick?: (rowIndex: number) => void
 }
 

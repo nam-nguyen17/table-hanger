@@ -8,7 +8,6 @@ interface TableProps {
   headers: string[]
   data: HangerData[]
   headerMapping: Record<string, string>
-  selectedRows?: HangerData[]
   onRowSelect?: (rowIndex: number) => void
   onRadioClick?: (rowIndex: number) => void
 }
@@ -19,17 +18,11 @@ const Table: React.FC<TableProps> = ({
   headerMapping,
   onRadioClick,
   onRowSelect,
-  selectedRows,
 }) => {
   return (
     <table role="table" className="table">
       <TableHeader headers={headers} headerMapping={headerMapping} />
-      <TableBody
-        data={data}
-        headers={headers}
-        onRadioClick={onRadioClick}
-        selectedRows={selectedRows}
-      />
+      <TableBody data={data} headers={headers} onRadioClick={onRadioClick} />
     </table>
   )
 }
