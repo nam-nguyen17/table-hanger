@@ -19,31 +19,32 @@ const headerMapping = {
 }
 
 type HangerTableProps = {
-  selectedRowsData: HangerData[]
-  selectedRow: number | null
+  rowsData: HangerData[]
+  selectedRowId: number | null
+  selectedRowData: HangerData[]
   setSelectedRows: (selectedRows: HangerData[]) => void
   onRadioClick: (rowIndex: number) => void
+  setSelectedRowsData: (selectedRows: HangerData[]) => void
 }
 
 const headers = Object.keys(headerMapping)
 
 const HangerTable: React.FC<HangerTableProps> = ({
-  selectedRowsData,
-  setSelectedRows,
   onRadioClick,
+  selectedRowData,
+  setSelectedRowsData,
 }) => {
   const { hangersData, enumData } = useHangerDataContext()
   const [modifiedData, setModifiedData] = useState<HangerData[]>([])
 
   const handleRowSelect = (rowIndex: number) => {
-    // Toggle row selection
     const selectedRow = modifiedData[rowIndex]
-    const isSelected = selectedRowsData.includes(selectedRow)
+    const isSelected = selectedRowData.includes(selectedRow)
 
     if (isSelected) {
-      setSelectedRows(selectedRowsData.filter((row) => row !== selectedRow))
+      setSelectedRowsData(selectedRowData.filter((row) => row !== selectedRow))
     } else {
-      setSelectedRows([...selectedRowsData, selectedRow])
+      setSelectedRowsData([...selectedRowData, selectedRow])
     }
   }
 

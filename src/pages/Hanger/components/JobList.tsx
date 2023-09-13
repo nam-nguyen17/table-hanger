@@ -14,6 +14,7 @@ const headerMapping = {
   '': '',
   model: 'Model',
   quantity: 'Quantity',
+  wSize: 'Width',
   tfNailQty: 'TF Fasteners',
   hNailQty: 'Face Fasteners',
   jNailQty: 'Joist Fasteners',
@@ -41,7 +42,6 @@ const JobList: React.FC<JobListProps> = ({
       addToFastenerTotalsMap(fastenerTotalsMap, row.hNailQty as string)
       addToFastenerTotalsMap(fastenerTotalsMap, row.jNailQty as string)
     })
-    console.log(fastenerTotalsMap)
 
     return fastenerTotalsMap
   }
@@ -82,6 +82,7 @@ const JobList: React.FC<JobListProps> = ({
             </td>
             <td role="cell">{row.model}</td>
             <td role="cell">1</td>
+            <td role="cell">{row.wSize}</td>
             <td role="cell">{row.tfNailQty}</td>
             <td role="cell">{row.hNailQty}</td>
             <td role="cell">{row.jNailQty}</td>

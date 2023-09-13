@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Button from '../../components/button/Button'
 import Search from '../../components/search/Search'
 import Navbar from '../../layouts/Navbar'
@@ -10,15 +10,16 @@ import JobList from './components/JobList'
 
 const Hanger: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'Output' | 'JobList'>('Output')
-  const [selectedRowData, setSelectedRowData] = useState<HangerData[]>([])
-  const [selectedRow, setSelectedRow] = useState<number | null>(null)
+  const [rowData, setRowData] = useState<HangerData[]>([])
+  const [selectedRowId, setSelectedRowId] = useState<number | null>(null)
+  const [selectedRowsData, setSelectedRowsData] = useState<HangerData[]>([])
 
   const handleButtonClick = () => {
-    if (selectedRow !== null) {
-      const selectedData = selectedRowData[selectedRow]
+    if (selectedRowId !== null) {
+      const selectedData = selectedRowsData[selectedRowId]
 
-      setSelectedRowData([...selectedRowData, selectedData])
-      setSelectedRow(null)
+      setRowData([...rowData, selectedData])
+      setSelectedRowId(null)
     }
   }
 
@@ -40,7 +41,7 @@ const Hanger: React.FC = () => {
             onClick={() => setActiveTab('JobList')}
           >
             <Button>
-              <div>Job List</div>
+              <div>Job List ({rowData.length})</div>
             </Button>
           </li>
         </ul>
@@ -49,7 +50,7 @@ const Hanger: React.FC = () => {
             <>
               <div className="addJob">
                 <Button
-                  disabled={selectedRow === null}
+                  disabled={selectedRowId === null}
                   onClick={handleButtonClick}
                 >
                   Add to Job List
@@ -65,17 +66,17 @@ const Hanger: React.FC = () => {
           <div style={{ margin: '14px 0' }}>
             {activeTab === 'Output' ? (
               <HangerTable
-                selectedRowsData={selectedRowData}
-                setSelectedRows={(selectedRows) =>
-                  setSelectedRowData(selectedRows)
-                }
-                onRadioClick={(rowIndex) => setSelectedRow(rowIndex)}
-                selectedRow={selectedRow}
+                rowsData={rowData}
+                setSelectedRows={(selectedRows) => setRowData(selectedRows)}
+                selectedRowId={selectedRowId}
+                selectedRowData={selectedRowsData}
+                setSelectedRowsData={setSelectedRowsData}
+                onRadioClick={(rowIndex) => setSelectedRowId(rowIndex)}
               />
             ) : (
               <JobList
-                selectedRowsData={selectedRowData}
-                setSelectedRowsData={setSelectedRowData}
+                selectedRowsData={selectedRowsData}
+                setSelectedRowsData={setSelectedRowsData}
               />
             )}
           </div>

@@ -17,7 +17,6 @@ const Table: React.FC<TableProps> = ({
   data,
   headerMapping,
   onRadioClick,
-  onRowSelect,
 }) => {
   return (
     <table role="table" className="table">
