@@ -34,54 +34,60 @@ const Hanger: React.FC = () => {
     <>
       <Navbar />
       <PageContainer>
-        <ul className="tabs paneHeader">
-          <li
-            className={`tabs__label ${activeTab === 'Output' ? 'active' : ''}`}
-            onClick={() => setActiveTab('Output')}
-          >
-            <Button>
-              <div>Output</div>
-            </Button>
-          </li>
-          <li
-            className={`tabs__label ${activeTab === 'JobList' ? 'active' : ''}`}
-            onClick={() => setActiveTab('JobList')}
-          >
-            <Button>
-              <div>Job List ({selectedRowsData.length})</div>
-            </Button>
-          </li>
-        </ul>
-        <div className="output-result">
-          {activeTab === 'Output' && (
-            <>
-              <div className="addJob">
-                <Button
-                  disabled={selectedRowId === null}
-                  onClick={handleButtonClick}
-                >
-                  Add to Job List
-                </Button>
-              </div>
-              <div>
-                <div className="tableInfoBar">
-                  <Search onSearch={console.log} />
+        <div className="outputSectionWrapper">
+          <ul className="tabs paneHeader">
+            <li
+              className={`tabs__label ${
+                activeTab === 'Output' ? 'active' : ''
+              }`}
+              onClick={() => setActiveTab('Output')}
+            >
+              <Button>
+                <div>Output</div>
+              </Button>
+            </li>
+            <li
+              className={`tabs__label ${
+                activeTab === 'JobList' ? 'active' : ''
+              }`}
+              onClick={() => setActiveTab('JobList')}
+            >
+              <Button>
+                <div>Job List ({selectedRowsData.length})</div>
+              </Button>
+            </li>
+          </ul>
+          <div className="output-result">
+            {activeTab === 'Output' && (
+              <>
+                <div className="addJob">
+                  <Button
+                    disabled={selectedRowId === null}
+                    onClick={handleButtonClick}
+                  >
+                    Add to Job List
+                  </Button>
                 </div>
-              </div>
-            </>
-          )}
-          <div style={{ margin: '14px 0' }}>
-            {activeTab === 'Output' ? (
-              <HangerTable
-                selectedRowData={selectedRowsData}
-                updateModifiedData={updateModifiedData}
-              />
-            ) : (
-              <JobList
-                selectedRowsData={selectedRowsData}
-                setSelectedRowsData={setSelectedRowsData}
-              />
+                <div>
+                  <div className="tableInfoBar">
+                    <Search onSearch={console.log} />
+                  </div>
+                </div>
+              </>
             )}
+            <div style={{ margin: '14px 0' }}>
+              {activeTab === 'Output' ? (
+                <HangerTable
+                  selectedRowData={selectedRowsData}
+                  updateModifiedData={updateModifiedData}
+                />
+              ) : (
+                <JobList
+                  selectedRowsData={selectedRowsData}
+                  setSelectedRowsData={setSelectedRowsData}
+                />
+              )}
+            </div>
           </div>
         </div>
       </PageContainer>

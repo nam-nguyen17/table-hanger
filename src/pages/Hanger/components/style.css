@@ -1,16 +1,13 @@
 @import url('./../../../styles/_variables.css');
 
 tr.pseudoFooter td.left {
-  width: calc(3 * 100% / 7);
   text-align: left;
   padding-left: 10px;
   border-right: 1px solid #ccc;
 }
 
 tr.pseudoFooter td.right {
-  width: calc(4 * 100% / 7);
   text-align: center;
-  padding-right: 10px;
 }
 
 tr td:last-child {

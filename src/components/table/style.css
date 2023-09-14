@@ -1,48 +1,36 @@
 .table {
-  border: 1px solid #ccc;
-  border-spacing: 0px;
+  border-collapse: collapse;
+  width: 100%;
   table-layout: auto;
+}
 
-  .header {
-    background-color: #b26d1e;
-    color: #fff;
-    font-weight: 700;
+.header {
+  position: sticky;
+  top: 0;
+  background-color: #b26d1e;
+  color: #fff;
+}
 
-    .th {
-      border: 1px solid #fff;
-      padding: 8px 10px;
-    }
+table.table th {
+  border: 1px solid #fff;
+  padding: 14px;
+}
+
+table.table .row > td {
+  border: 1px solid #ddd;
+  padding: 14px;
+  align-content: center;
+  text-align: center;
+  min-width: 100px;
+  vertical-align: middle;
+}
+
+.row td {
+  &:nth-child(odd) {
+    background-color: white;
   }
 
-  .body {
-    display: block;
-    max-height: 90vh;
-    overflow: auto;
-  }
-
-  .header,
-  .body tr {
-    display: table;
-    width: 100%;
-    table-layout: fixed;
-  }
-
-  .row td {
-    border: 1px solid #ccc;
-    padding: 8px;
-    overflow: hidden;
-    align-content: center;
-    text-align: center;
-    vertical-align: middle;
-    color: #000;
-    font-weight: 500;
-
-    &:nth-child(odd) {
-      background-color: white;
-    }
-
-    &:nth-child(even) {
-      background-color: #f8f8f8;
-    }
+  &:nth-child(even) {
+    background-color: #f8f8f8;
   }
 }

@@ -1,8 +1,8 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import Table from '../../components/table/Table'
 import { useHangerDataContext } from '../../contexts/HangerDataContext'
 import { HangerData, EnumData } from '../../utils/constants'
+import { useSelectRowContext } from '../../contexts/SelectRowContext'
 
 const headerMapping = {
   '': '',
@@ -75,7 +75,14 @@ const HangerTable: React.FC<HangerTableProps> = ({ updateModifiedData }) => {
 
     setModifiedData(updatedData)
     updateModifiedData(updatedData)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hangersData, enumData])
+
+  const { selectedRowId, setSelectedRowId } = useSelectRowContext()
+
+  const handleRowSelect = (rowIndex: number) => {
+    setSelectedRowId(rowIndex)
+  }
 
   return (
     <div className="table-viewer">
@@ -83,6 +90,26 @@ const HangerTable: React.FC<HangerTableProps> = ({ updateModifiedData }) => {
         headers={headers}
         data={modifiedData}
         headerMapping={headerMapping}
+        cellRenderer={(row, header, rowIndex) => {
+          if (header === '') {
+            return (
+              <input
+                type="radio"
+                name="selectRow"
+                value={rowIndex}
+                style={{
+                  cursor: 'pointer',
+                  width: '18px',
+                  height: '18px',
+                }}
+                checked={selectedRowId === rowIndex}
+                onChange={() => handleRowSelect(rowIndex)}
+              />
+            )
+          } else {
+            return row[header]
+          }
+        }}
       />
     </div>
   )
