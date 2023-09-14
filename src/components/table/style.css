@@ -1,6 +1,7 @@
 .table {
   border: 1px solid #ccc;
   border-spacing: 0px;
+  table-layout: auto;
 
   .header {
     background-color: #b26d1e;

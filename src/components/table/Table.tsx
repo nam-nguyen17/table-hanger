@@ -8,20 +8,13 @@ interface TableProps {
   headers: string[]
   data: HangerData[]
   headerMapping: Record<string, string>
-  onRowSelect?: (rowIndex: number) => void
-  onRadioClick?: (rowIndex: number) => void
 }
 
-const Table: React.FC<TableProps> = ({
-  headers,
-  data,
-  headerMapping,
-  onRadioClick,
-}) => {
+const Table: React.FC<TableProps> = ({ headers, data, headerMapping }) => {
   return (
     <table role="table" className="table">
       <TableHeader headers={headers} headerMapping={headerMapping} />
-      <TableBody data={data} headers={headers} onRadioClick={onRadioClick} />
+      <TableBody data={data} headers={headers} />
     </table>
   )
 }

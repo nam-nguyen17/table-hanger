@@ -2,7 +2,7 @@ import React, { createContext, useContext, useState, useEffect } from 'react'
 import { fetchData } from '../utils/helpers'
 import { EnumData, HangerData } from '../utils/constants'
 
-interface HangerDataContextProps {
+type HangerDataContextProps = {
   hangersData: HangerData[]
   enumData: EnumData[]
   fetchHangerData: () => void

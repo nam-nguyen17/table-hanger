@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react'
 import Table from '../../components/table/Table'
 import { useHangerDataContext } from '../../contexts/HangerDataContext'
@@ -19,34 +20,15 @@ const headerMapping = {
 }
 
 type HangerTableProps = {
-  rowsData: HangerData[]
-  selectedRowId: number | null
   selectedRowData: HangerData[]
-  setSelectedRows: (selectedRows: HangerData[]) => void
-  onRadioClick: (rowIndex: number) => void
-  setSelectedRowsData: (selectedRows: HangerData[]) => void
+  updateModifiedData: (newModifiedData: HangerData[]) => void
 }
 
 const headers = Object.keys(headerMapping)
 
-const HangerTable: React.FC<HangerTableProps> = ({
-  onRadioClick,
-  selectedRowData,
-  setSelectedRowsData,
-}) => {
+const HangerTable: React.FC<HangerTableProps> = ({ updateModifiedData }) => {
   const { hangersData, enumData } = useHangerDataContext()
   const [modifiedData, setModifiedData] = useState<HangerData[]>([])
-
-  const handleRowSelect = (rowIndex: number) => {
-    const selectedRow = modifiedData[rowIndex]
-    const isSelected = selectedRowData.includes(selectedRow)
-
-    if (isSelected) {
-      setSelectedRowsData(selectedRowData.filter((row) => row !== selectedRow))
-    } else {
-      setSelectedRowsData([...selectedRowData, selectedRow])
-    }
-  }
 
   useEffect(() => {
     // Perform the modifications to hangersData based on enumData here
@@ -92,20 +74,15 @@ const HangerTable: React.FC<HangerTableProps> = ({
     })
 
     setModifiedData(updatedData)
+    updateModifiedData(updatedData)
   }, [hangersData, enumData])
 
-  const handleRadioClick = (rowIndex: number) => {
-    handleRowSelect(rowIndex)
-    onRadioClick(rowIndex)
-  }
-
   return (
-    <div>
+    <div className="table-viewer">
       <Table
         headers={headers}
         data={modifiedData}
         headerMapping={headerMapping}
-        onRadioClick={(rowIndex) => handleRadioClick(rowIndex)}
       />
     </div>
   )

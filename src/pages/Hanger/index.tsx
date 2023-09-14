@@ -1,26 +1,33 @@
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import Button from '../../components/button/Button'
 import Search from '../../components/search/Search'
 import Navbar from '../../layouts/Navbar'
 import PageContainer from '../../layouts/PageContainer'
 import { HangerData } from '../../utils/constants'
 import HangerTable from './HangerTable'
-import './style.css'
 import JobList from './components/JobList'
+import './style.css'
+import { useSelectRowContext } from '../../contexts/SelectRowContext'
 
 const Hanger: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'Output' | 'JobList'>('Output')
-  const [rowData, setRowData] = useState<HangerData[]>([])
-  const [selectedRowId, setSelectedRowId] = useState<number | null>(null)
+  const { selectedRowId, setSelectedRowId } = useSelectRowContext()
+  const [modifiedData, setModifiedData] = useState<HangerData[]>([])
   const [selectedRowsData, setSelectedRowsData] = useState<HangerData[]>([])
 
   const handleButtonClick = () => {
     if (selectedRowId !== null) {
-      const selectedData = selectedRowsData[selectedRowId]
+      const selectedData = modifiedData[selectedRowId]
 
-      setRowData([...rowData, selectedData])
+      console.log('selectedData', selectedData)
+      setModifiedData([...modifiedData, selectedData])
+      setSelectedRowsData([...selectedRowsData, selectedData])
       setSelectedRowId(null)
     }
+  }
+
+  const updateModifiedData = (newModifiedData: HangerData[]) => {
+    setModifiedData(newModifiedData)
   }
 
   return (
@@ -41,7 +48,7 @@ const Hanger: React.FC = () => {
             onClick={() => setActiveTab('JobList')}
           >
             <Button>
-              <div>Job List ({rowData.length})</div>
+              <div>Job List ({selectedRowsData.length})</div>
             </Button>
           </li>
         </ul>
@@ -66,12 +73,8 @@ const Hanger: React.FC = () => {
           <div style={{ margin: '14px 0' }}>
             {activeTab === 'Output' ? (
               <HangerTable
-                rowsData={rowData}
-                setSelectedRows={(selectedRows) => setRowData(selectedRows)}
-                selectedRowId={selectedRowId}
                 selectedRowData={selectedRowsData}
-                setSelectedRowsData={setSelectedRowsData}
-                onRadioClick={(rowIndex) => setSelectedRowId(rowIndex)}
+                updateModifiedData={updateModifiedData}
               />
             ) : (
               <JobList

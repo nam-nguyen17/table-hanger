@@ -3,12 +3,15 @@ import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
 import { HangerDataContextProvider } from './contexts/HangerDataContext'
+import { SelectRowContextProvider } from './contexts/SelectRowContext'
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement)
 root.render(
   <>
     <HangerDataContextProvider>
-      <App />
+      <SelectRowContextProvider>
+        <App />
+      </SelectRowContextProvider>
     </HangerDataContextProvider>
   </>
 )
