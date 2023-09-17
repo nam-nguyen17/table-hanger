@@ -1,20 +1,21 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-useless-concat */
 import React from 'react'
-import { HangerData } from '../../../utils/constants'
 import Table from '../../../components/table/Table'
+import { SelectedRow } from '../../../utils/constants'
 import './style.css'
 
 type JobListProps = {
-  selectedRowsData: HangerData[]
-  setSelectedRowsData: (selectedRows: HangerData[]) => void
+  selectedRowsData: SelectedRow[]
+  setSelectedRowsData: (selectedRows: SelectedRow[]) => void
+  onEditClick: (rowIndex: number) => void
 }
 
 const headerMapping = {
   '': '',
+  Job: 'Job',
   model: 'Model',
   Quantity: 'Quantity',
-  wSize: 'Width',
   tfNailQty: 'TF Fasteners',
   hNailQty: 'Face Fasteners',
   jNailQty: 'Joist Fasteners',
@@ -23,9 +24,10 @@ const headerMapping = {
 
 const headers = Object.keys(headerMapping)
 
-const JobListTable: React.FC<JobListProps> = ({
+const JobList: React.FC<JobListProps> = ({
   selectedRowsData,
   setSelectedRowsData,
+  onEditClick,
 }) => {
   const handleDeleteClick = (rowIndex: number) => {
     const updatedRowsData = [...selectedRowsData]
@@ -33,51 +35,21 @@ const JobListTable: React.FC<JobListProps> = ({
     setSelectedRowsData(updatedRowsData)
   }
 
-  const calculateFastenerTotals = () => {
-    const fastenerTotalsMap = new Map<string, number>()
-
-    selectedRowsData.forEach((row) => {
-      addToFastenerTotalsMap(fastenerTotalsMap, row.tfNailQty as string)
-      addToFastenerTotalsMap(fastenerTotalsMap, row.hNailQty as string)
-      addToFastenerTotalsMap(fastenerTotalsMap, row.jNailQty as string)
-    })
-
-    return fastenerTotalsMap
-  }
-
-  const addToFastenerTotalsMap = (
-    fastenerTotalsMap: Map<string, number>,
-    inputString: string
-  ) => {
-    const match = inputString.match(/\((\d+)\)\s*([^]*)/)
-
-    if (match) {
-      const numericPart = parseInt(match[1], 10)
-      const textPart = match[2].trim()
-
-      if (!isNaN(numericPart)) {
-        if (fastenerTotalsMap.has(textPart)) {
-          fastenerTotalsMap.set(
-            textPart,
-            fastenerTotalsMap.get(textPart)! + numericPart
-          )
-        } else {
-          fastenerTotalsMap.set(textPart, numericPart)
-        }
-      }
-    }
-  }
-
-  const fastenerTotalsMap = calculateFastenerTotals()
-
   return (
     <Table
       headers={headers}
-      data={selectedRowsData}
+      data={selectedRowsData.map((row) => row.data)}
       headerMapping={headerMapping}
       cellRenderer={(row, header, rowIndex) => {
         if (header === '') {
-          return <button type="button">Edit</button>
+          return (
+            <button
+              type="button"
+              onClick={() => onEditClick(selectedRowsData[rowIndex].index)}
+            >
+              Edit
+            </button>
+          )
         } else if (header === 'Delete') {
           return (
             <a role="button" onClick={() => handleDeleteClick(rowIndex)}>
@@ -104,23 +76,8 @@ const JobListTable: React.FC<JobListProps> = ({
           return row[header]
         }
       }}
-    >
-      <tr className="pseudoFooter">
-        <td className="left" colSpan={4}></td>
-        <td className="right" colSpan={10}>
-          <div className="subTotalHead">Fastener Totals</div>
-          <div className="subTotalData">
-            {Array.from(fastenerTotalsMap).map(([textPart, numericPart]) => (
-              <React.Fragment key={textPart}>
-                ({numericPart}) {textPart}
-                <br />
-              </React.Fragment>
-            ))}
-          </div>
-        </td>
-      </tr>
-    </Table>
+    ></Table>
   )
 }
 
-export default JobListTable
+export default JobList

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Table from '../../components/table/Table'
 import { useHangerDataContext } from '../../contexts/HangerDataContext'
-import { HangerData, EnumData } from '../../utils/constants'
 import { useSelectRowContext } from '../../contexts/SelectRowContext'
+import { EnumData, HangerData } from '../../utils/constants'
 
 const headerMapping = {
   '': '',
@@ -20,15 +20,19 @@ const headerMapping = {
 }
 
 type HangerTableProps = {
-  selectedRowData: HangerData[]
   updateModifiedData: (newModifiedData: HangerData[]) => void
+  filteredData: HangerData[]
 }
 
 const headers = Object.keys(headerMapping)
 
-const HangerTable: React.FC<HangerTableProps> = ({ updateModifiedData }) => {
+const HangerTable: React.FC<HangerTableProps> = ({
+  updateModifiedData,
+  filteredData,
+}) => {
   const { hangersData, enumData } = useHangerDataContext()
   const [modifiedData, setModifiedData] = useState<HangerData[]>([])
+  const { selectedRowId, setSelectedRowId } = useSelectRowContext()
 
   useEffect(() => {
     // Perform the modifications to hangersData based on enumData here
@@ -77,8 +81,6 @@ const HangerTable: React.FC<HangerTableProps> = ({ updateModifiedData }) => {
     updateModifiedData(updatedData)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hangersData, enumData])
-
-  const { selectedRowId, setSelectedRowId } = useSelectRowContext()
 
   const handleRowSelect = (rowIndex: number) => {
     setSelectedRowId(rowIndex)

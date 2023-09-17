@@ -1,4 +1,5 @@
 export interface HangerData {
+  id: number
   model: string
   ici: string
   wSize: number
@@ -19,4 +20,9 @@ export interface EnumData {
   name: string
   enum: number
   displayLabel: string
+}
+
+export interface SelectedRow {
+  data: HangerData
+  index: number
 }

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import Button from '../button/Button'
 import './style.css'
 
 interface SearchProps {
@@ -9,32 +8,23 @@ interface SearchProps {
 const Search: React.FC<SearchProps> = ({ onSearch }) => {
   const [searchValue, setSearchValue] = useState('')
 
-  const handleSearch = () => {
-    onSearch(searchValue)
-  }
-
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(event.target.value)
-  }
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    handleSearch()
+    const query = event.target.value
+    setSearchValue(query)
+    onSearch(query)
   }
 
   return (
-    <form className="searchBar" onSubmit={handleSubmit}>
+    <div className="searchBar">
       <input
         className="searchBar input"
         type="text"
         placeholder="Search by name"
         value={searchValue}
         onChange={handleInputChange}
+        autoComplete="on"
       />
-      <Button type="submit" className="searchBar button">
-        Search
-      </Button>
-    </form>
+    </div>
   )
 }
 
