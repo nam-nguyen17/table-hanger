@@ -1,54 +1,28 @@
-import React, { useMemo, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Button from '../../components/button/Button'
 import Search from '../../components/search/Search'
-import { useSelectRowContext } from '../../contexts/SelectRowContext'
 import Navbar from '../../layouts/Navbar'
 import PageContainer from '../../layouts/PageContainer'
-import { HangerData, SelectedRow } from '../../utils/constants'
-import { filterData } from '../../utils/helpers'
+import { HangerData } from '../../utils/constants'
 import HangerTable from './HangerTable'
 import JobList from './components/JobList'
 import './style.css'
+import { useSelectRowContext } from '../../contexts/SelectRowContext'
 
 const Hanger: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'Output' | 'JobList'>('Output')
   const { selectedRowId, setSelectedRowId } = useSelectRowContext()
   const [modifiedData, setModifiedData] = useState<HangerData[]>([])
-  const [selectedRowsData, setSelectedRowsData] = useState<SelectedRow[]>([])
-  const [searchQuery, setSearchQuery] = useState('')
+  const [selectedRowsData, setSelectedRowsData] = useState<HangerData[]>([])
   const [editMode, setEditMode] = useState(false)
-
-  const updateModifiedData = (newModifiedData: HangerData[]) => {
-    setModifiedData(newModifiedData)
-  }
-
-  // filteredData is the data that is filtered by the search query
-  const filteredData = useMemo(() => {
-    return filterData<HangerData>(modifiedData, searchQuery, [
-      'model',
-      'wSize',
-      'hSize',
-      'bSize',
-      'tfSize',
-      'tfNailQty',
-      'hNailQty',
-      'jNailQty',
-      'load',
-      'uplift',
-      'ici',
-      'tfNailType',
-      'hNailType',
-      'jNailType',
-    ])
-  }, [searchQuery, modifiedData])
 
   const handleButtonClick = () => {
     if (selectedRowId !== null) {
       const selectedData = modifiedData[selectedRowId]
-      setSelectedRowsData([
-        ...selectedRowsData,
-        { data: selectedData, index: selectedRowId },
-      ])
+
+      // Set the index property
+      selectedData.index = selectedRowId
+      setSelectedRowsData([...selectedRowsData, selectedData])
       setSelectedRowId(null)
     }
   }
@@ -57,21 +31,47 @@ const Hanger: React.FC = () => {
     // Switch to HangerTable tab and set edit mode to true
     setActiveTab('Output')
     setEditMode(true)
+
+    // Set selectedRowId to the original index
     setSelectedRowId(rowIndex)
   }
 
-  const handleRowReSelect = (rowIndex: number) => {
-    setSelectedRowId(rowIndex)
-    setEditMode(false)
-
+  const handleEditSave = (rowIndex: number) => {
+    // Switch to JobList tab and set edit mode to false
     if (selectedRowId !== null) {
       const selectedData = modifiedData[selectedRowId]
-      setSelectedRowsData([{ data: selectedData, index: selectedRowId }])
-      setSelectedRowId(null)
+      selectedData.index = selectedRowId
+
+      // get item from localStorage
+      const editedData = localStorage.getItem('selectedData')
+
+      // Update the selectedRowsData with the editedData
+      if (editedData) {
+        const parsedEditedData = JSON.parse(editedData)
+        console.log(parsedEditedData)
+
+        const updatedSelectedRowsData = [...selectedRowsData]
+
+        console.log('updatedSelectedRowsData', updatedSelectedRowsData)
+        const index = updatedSelectedRowsData.findIndex(
+          (data) => data['index'] === parsedEditedData['index']
+        )
+
+        console.log('index', index)
+
+        if (index !== -1) {
+          updatedSelectedRowsData[index] = selectedData
+          setSelectedRowsData(updatedSelectedRowsData)
+        }
+      }
     }
+
+    setEditMode(false)
   }
 
-  console.log('selectedRowId', selectedRowId)
+  const updateModifiedData = (newModifiedData: HangerData[]) => {
+    setModifiedData(newModifiedData)
+  }
 
   return (
     <>
@@ -114,7 +114,7 @@ const Hanger: React.FC = () => {
                     <Button
                       onClick={() => {
                         setSelectedRowId(selectedRowId)
-                        handleRowReSelect(selectedRowId)
+                        handleEditSave(selectedRowId)
                       }}
                     >
                       Edit
@@ -123,7 +123,7 @@ const Hanger: React.FC = () => {
                 </div>
                 <div>
                   <div className="tableInfoBar">
-                    <Search onSearch={setSearchQuery} />
+                    <Search onSearch={console.log} />
                   </div>
                 </div>
               </>
@@ -131,8 +131,8 @@ const Hanger: React.FC = () => {
             <div style={{ margin: '14px 0' }}>
               {activeTab === 'Output' ? (
                 <HangerTable
+                  selectedRowData={selectedRowsData}
                   updateModifiedData={updateModifiedData}
-                  filteredData={filteredData}
                 />
               ) : (
                 <JobList

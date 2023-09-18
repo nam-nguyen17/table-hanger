@@ -1,17 +1,20 @@
 export interface HangerData {
-  id: number
+  index: number // just update the index
   model: string
   ici: string
   wSize: number
   hSize: number
   bSize: number
   tfSize: number | string
-  tfNailQty: number | string
   tfNailType: any
-  hNailQty: number | string
+  tfNailQty: number | string
+  tfFastenerDisplay: number | string
   hNailType: any
-  jNailQty: number | string
+  hNailQty: number | string
+  fFastenerDisplay: number | string
   jNailType: any
+  jNailQty: number | string
+  jFastenerDisplay: number | string
   load: number
   uplift: number
 }

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Table from '../../components/table/Table'
 import { useHangerDataContext } from '../../contexts/HangerDataContext'
+import { HangerData, EnumData } from '../../utils/constants'
 import { useSelectRowContext } from '../../contexts/SelectRowContext'
-import { EnumData, HangerData } from '../../utils/constants'
 
 const headerMapping = {
   '': '',
@@ -12,33 +12,29 @@ const headerMapping = {
   hSize: 'Height',
   bSize: 'Bearing',
   tfSize: 'TF Depth',
-  tfNailQty: 'TF Fasteners',
-  hNailQty: 'Face Fasteners',
-  jNailQty: 'Joist Fasteners',
+  tfFastenerDisplay: 'TF Fasteners',
+  fFastenerDisplay: 'Face Fasteners',
+  jFastenerDisplay: 'Joist Fasteners',
   load: 'Download (lbs)',
   uplift: 'Uplift (lbs)',
 }
 
 type HangerTableProps = {
+  selectedRowData: HangerData[]
   updateModifiedData: (newModifiedData: HangerData[]) => void
-  filteredData: HangerData[]
 }
 
 const headers = Object.keys(headerMapping)
 
-const HangerTable: React.FC<HangerTableProps> = ({
-  updateModifiedData,
-  filteredData,
-}) => {
+const HangerTable: React.FC<HangerTableProps> = ({ updateModifiedData }) => {
   const { hangersData, enumData } = useHangerDataContext()
   const [modifiedData, setModifiedData] = useState<HangerData[]>([])
-  const { selectedRowId, setSelectedRowId } = useSelectRowContext()
 
   useEffect(() => {
     // Perform the modifications to hangersData based on enumData here
     const updatedData = hangersData.map((row) => {
       // TF Fasteners
-      const tfNailQty =
+      const tfFastenerDisplay =
         row.tfNailQty === 0
           ? '-'
           : `(${row.tfNailQty}) ${
@@ -60,10 +56,10 @@ const HangerTable: React.FC<HangerTableProps> = ({
           }`
         : ''
 
-      const hNailQty = `${hNailQtyValue}${hNailQtyLabel}`
+      const fFastenerDisplay = `${hNailQtyValue}${hNailQtyLabel}`
 
       // Joist Fasteners
-      const jNailQty = `(${row.jNailQty}) ${
+      const jFastenerDisplay = `(${row.jNailQty}) ${
         enumData.find((item: EnumData) => item.enum === row.jNailType)
           ?.displayLabel || ''
       }`
@@ -71,9 +67,9 @@ const HangerTable: React.FC<HangerTableProps> = ({
       return {
         ...row,
         tfSize: row.tfSize === 0 ? '-' : row.tfSize,
-        tfNailQty,
-        hNailQty,
-        jNailQty,
+        tfFastenerDisplay,
+        fFastenerDisplay,
+        jFastenerDisplay,
       }
     })
 
@@ -81,6 +77,8 @@ const HangerTable: React.FC<HangerTableProps> = ({
     updateModifiedData(updatedData)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hangersData, enumData])
+
+  const { selectedRowId, setSelectedRowId } = useSelectRowContext()
 
   const handleRowSelect = (rowIndex: number) => {
     setSelectedRowId(rowIndex)
