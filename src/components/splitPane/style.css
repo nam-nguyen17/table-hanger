@@ -1,0 +1,29 @@
+.split-pane-container {
+  display: flex;
+  height: 100vh;
+  border-top: 5px solid #d38225;
+}
+
+.split-pane-left {
+  flex: 0 0 auto;
+  overflow: hidden;
+  transition: width 0.1s;
+  text-align: center;
+}
+
+.split-pane-divider {
+  flex: 0 0 4px;
+  cursor: col-resize;
+  background-color: #ccc;
+}
+
+.split-pane-divider.dragging {
+  background-color: #999;
+}
+
+.split-pane-right {
+  flex: 1 1 auto;
+  overflow: auto;
+  background-color: #fff;
+  text-align: center;
+}

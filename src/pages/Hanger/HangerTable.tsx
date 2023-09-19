@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import Table from '../../components/table/Table'
 import { useHangerDataContext } from '../../contexts/HangerDataContext'
-import { HangerData, EnumData } from '../../utils/constants'
-import { useSelectRowContext } from '../../contexts/SelectRowContext'
+import { EnumData, HangerData } from '../../utils/constants'
+import { useSelectedRowContext } from '../../contexts/SelectedRowContext'
 
 const headerMapping = {
   '': '',
@@ -34,13 +34,13 @@ const HangerTable: React.FC<HangerTableProps> = ({ updateModifiedData }) => {
     // Perform the modifications to hangersData based on enumData here
     const updatedData = hangersData.map((row) => {
       // TF Fasteners
+      const tfEnumData = enumData.find(
+        (item: EnumData) => item.enum === row.tfNailType
+      )
       const tfFastenerDisplay =
-        row.tfNailQty === 0
+        row.tfNailQty === 0 || !tfEnumData?.displayLabel
           ? '-'
-          : `(${row.tfNailQty}) ${
-              enumData.find((item: EnumData) => item.enum === row.tfNailType)
-                ?.displayLabel || ''
-            }`
+          : `(${row.tfNailQty}) ${tfEnumData.displayLabel || ''}`
 
       // Face Fasteners
       const hNailQtyValue = Array.isArray(row.hNailQty)
@@ -59,10 +59,13 @@ const HangerTable: React.FC<HangerTableProps> = ({ updateModifiedData }) => {
       const fFastenerDisplay = `${hNailQtyValue}${hNailQtyLabel}`
 
       // Joist Fasteners
-      const jFastenerDisplay = `(${row.jNailQty}) ${
-        enumData.find((item: EnumData) => item.enum === row.jNailType)
-          ?.displayLabel || ''
-      }`
+      const jEnumData = enumData.find(
+        (item: EnumData) => item.enum === row.jNailType
+      )
+      const jFastenerDisplay =
+        row.jNailQty === 0 || !jEnumData?.displayLabel
+          ? '-'
+          : `(${row.jNailQty}) ${jEnumData.displayLabel || ''}`
 
       return {
         ...row,
@@ -78,7 +81,7 @@ const HangerTable: React.FC<HangerTableProps> = ({ updateModifiedData }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hangersData, enumData])
 
-  const { selectedRowId, setSelectedRowId } = useSelectRowContext()
+  const { selectedRowId, setSelectedRowId } = useSelectedRowContext()
 
   const handleRowSelect = (rowIndex: number) => {
     setSelectedRowId(rowIndex)

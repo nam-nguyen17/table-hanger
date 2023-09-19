@@ -1,9 +1,10 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 /* eslint-disable no-useless-concat */
 import React from 'react'
-import { HangerData } from '../../../utils/constants'
 import Table from '../../../components/table/Table'
+import { HangerData } from '../../../utils/constants'
 import './style.css'
+import { useSelectedRowContext } from '../../../contexts/SelectedRowContext'
 
 type JobListProps = {
   selectedRowsData: HangerData[]
@@ -29,6 +30,9 @@ const JobListTable: React.FC<JobListProps> = ({
   setSelectedRowsData,
   onEditClick,
 }) => {
+  const { setSelectedRowData } = useSelectedRowContext()
+
+  console.log('selectedRowsData', selectedRowsData)
   const handleDeleteClick = (rowIndex: number) => {
     const updatedRowsData = [...selectedRowsData]
     updatedRowsData.splice(rowIndex, 1)
@@ -73,8 +77,7 @@ const JobListTable: React.FC<JobListProps> = ({
   const fastenerTotalsMap = calculateFastenerTotals()
 
   const handleEditClick = (rowIndex: number) => {
-    const selectedData = selectedRowsData[rowIndex]
-    localStorage.setItem('selectedData', JSON.stringify(selectedData))
+    setSelectedRowData(selectedRowsData[rowIndex])
   }
 
   return (

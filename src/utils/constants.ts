@@ -24,8 +24,3 @@ export interface EnumData {
   enum: number
   displayLabel: string
 }
-
-export interface SelectedRow {
-  data: HangerData
-  index: number
-}

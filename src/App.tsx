@@ -1,14 +1,14 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import Dashboard from './pages/Dashboard'
-import Hanger from './pages/Hanger'
+import Main from './pages/Main'
 
 const App: React.FC = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Dashboard />} />
-        <Route path="/hanger" element={<Hanger />} />
+        <Route path="/hanger" element={<Main />} />
       </Routes>
     </Router>
   )
